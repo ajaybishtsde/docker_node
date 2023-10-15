@@ -1,0 +1,19 @@
+version: "3"
+services:
+  node-app:
+    build:
+      context: .
+      args:
+        NODE_ENV: "development"
+    volumes:
+      - ./:/app:ro
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - MONGO_USER=ajay
+      - MONGO_PASS=ajay
+    command: npm run dev
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=ajay
+      - MONGO_INITDB_ROOT_PASSWORD=ajay
