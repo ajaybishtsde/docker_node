@@ -6,14 +6,19 @@ services:
       - "3000:3000"
     environment:
       - PORT=3000
+    volumes:
+      - ./:/app:ro
+      - /app/node_modules
 
   mongo:
-  # here we are using  existing mongo image from the docker hub
+  # here we are using  existing mongo image from the docker hub,
+  # use mongosh to enter mongodb
     image: mongo
     environment:
       - MONGO_INITDB_ROOT_USERNAME=ajay
       - MONGO_INITDB_ROOT_PASSWORD=ajay
     volumes:
       - mongo-db:/data/db
+      # Here er need to provide all list of named volumes 
 volumes:
   mongo-db:
